@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { FirebaseAuthService } from './firebase-auth.service';
 
@@ -29,10 +30,12 @@ import { Tab2aPage } from './tab2a/tab2a.page';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
    ReactiveFormsModule, HttpClientModule,  
   AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     AngularFireAuthModule
 ],
   providers: [
     FirebaseAuthService,
+    AngularFireDatabase,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
@@ -40,5 +43,16 @@ import { Tab2aPage } from './tab2a/tab2a.page';
 export class AppModule {}
 
 /* 
+// import { HomePage } from '../pages/home/home';
+// export const firebaseConfig = {
 
+@NgModule({
+  entryComponents: [
+    MyApp,
+    HomePage
+  ],
+  providers: [
+    AngularFireDatabase,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
 */
