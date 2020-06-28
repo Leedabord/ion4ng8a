@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,13 +17,15 @@ import { Tab2aPage } from './tab2a/tab2a.page';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, //  ReactiveFormsModule, 
     Tab2aPage
   ],
   entryComponents: [
-    Tab2aPage
+    Tab2aPage  // ReactiveFormsModule
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,  AngularFireModule.initializeApp(environment.firebase),
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  // ReactiveFormsModule,  
+  AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
 ],
   providers: [
