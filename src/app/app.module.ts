@@ -19,14 +19,15 @@ import { Tab2aPage } from './tab2a/tab2a.page';
 
 @NgModule({
   declarations: [
-    AppComponent, //  ReactiveFormsModule, 
-    Tab2aPage
+    AppComponent, 
+    // ReactiveFormsModule, 
+    Tab2aPage, NewContactPage
   ],
   entryComponents: [
-    Tab2aPage  // ReactiveFormsModule
+    Tab2aPage, NewContactPage  // , ReactiveFormsModule
   ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-  // ReactiveFormsModule,  
+   ReactiveFormsModule, HttpClientModule,  
   AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
 ],
@@ -39,25 +40,5 @@ import { Tab2aPage } from './tab2a/tab2a.page';
 export class AppModule {}
 
 /* 
-
-
-@NgModule({
-  declarations: [AppComponent, NewContactPage],
-  entryComponents: [NewContactPage],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}
 
 */
