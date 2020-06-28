@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { Contact } from '../models/contact';
-import { DataService } from '../services/data.service';
+import { DataService } from '../services/datax.service';
 
 @Component({
   selector: 'app-new-contact',
