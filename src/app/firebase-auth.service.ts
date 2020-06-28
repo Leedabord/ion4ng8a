@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, Subject, from } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { User, auth } from 'firebase/app';
-import { ProfileModel } from './models/profile/profile.model';
+import { ProfileModel } from './models/profile';
 
 @Injectable()
 export class FirebaseAuthService {

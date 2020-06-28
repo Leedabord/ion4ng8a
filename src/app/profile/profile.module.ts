@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
+import { ProfilePage } from ''../models/profile';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilePageResolver } from './profile.resolver';
 import { ProfilePageGuard } from './profile-can-activate.guard';
