@@ -26,15 +26,23 @@ quotes: Observable<any>;
     ) {
     this.quotes = this.httpC.get(this.favQuotesURL);
     console.log(this.quotes);
+
+  fetch(this.favQuotesURL) 
+   .then(res => res.json()) 
+   .then (recs => { this.quotes = recs;  console.log(this.quotes); });
   }
 
   getQuotes() {  
     const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
     const params = new HttpParams().set('userId', '1');
-  this.posts = this.http.get(this.ROOT_URL + '/posts', { params })    
-}
-
-
+//  this.posts = this.http.get(this.ROOT_URL + '/posts', { params })    
+//  fetch(this.favQuotesURL) .then() .then (recs => { });
+// fetch('https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb')
+// .then(res => res.json()) // Read the response stream as a json, json() function also returns a promise, and .then can return a promise which will cause the next .then to wait for it to resolve
+// .then(recs => {
+	// We will get the posts of the first user
+//  const firstUser = recs; console.log(firstUser);
+//});
 // return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 //    this.quotes = this.httpC.get(this.favQuotesURL);
   }
