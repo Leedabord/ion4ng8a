@@ -29,6 +29,7 @@ quotes: Observable<any>;
   }
 
   getQuotes() {  
+    const http = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
 // return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 //    this.quotes = this.httpC.get(this.favQuotesURL);
   }
