@@ -13,9 +13,9 @@ import { Tab2aPage } from '../tab2a/tab2a.page';
 })
 export class Tab1Page {
 
-// readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
+//readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
-readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
+ readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
 quotes: Observable<any>;
 
