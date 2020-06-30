@@ -21,6 +21,7 @@ quotes: any;
     this.platform.ready().then(() => {
   //    this.initializeApp();
     this.quotes = this.httpC.get(this.favQuotesURL);
+    console.log(this.q);
     });
   }
 //  initializeApp() {  }
