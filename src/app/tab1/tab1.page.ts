@@ -13,9 +13,12 @@ import { Tab2aPage } from '../tab2a/tab2a.page';
 })
 export class Tab1Page {
 
-//readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
+favQuotesURL = 
+ 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb' ;
+  
+//  'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb'; 
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
- readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
+// readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
 quotes: Observable<any>;
 
@@ -24,17 +27,20 @@ quotes: Observable<any>;
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
-    this.quotes = this.httpC.get(this.favQuotesURL);
-    console.log(this.quotes);
+//    this.quotes = this.httpC.get(this.favQuotesURL);
+    console.log('qq: ' , this.quotes);
 
-  fetch(this.favQuotesURL) 
+  fetch( 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb' ) 
    .then(res => res.json()) 
-   .then (recs => { this.quotes = recs;  console.log(this.quotes); });
-  }
+   .then (recs => { const qq = recs; // JSON.parse(recs) .records; 
+     this.quotes = qq.records;
+    console.log('recs:: ', this.quotes); });
 
-  getQuotes() {  
-    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
-    const params = new HttpParams().set('userId', '1');
+//  }
+
+//  getQuotes() {  
+//    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+//    const params = new HttpParams().set('userId', '1');
 //  this.posts = this.http.get(this.ROOT_URL + '/posts', { params })    
 //  fetch(this.favQuotesURL) .then() .then (recs => { });
 // fetch('https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb')
