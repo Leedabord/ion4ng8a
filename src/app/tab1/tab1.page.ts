@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { PopoverController, ToastController } from '@ionic/angular';
 import { Tab2aPage } from '../tab2a/tab2a.page';
 
@@ -9,11 +10,21 @@ import { Tab2aPage } from '../tab2a/tab2a.page';
 })
 export class Tab1Page {
 
+readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
+quotes: any;
+
   constructor(
+    private httpC: HttpClient, 
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
+    this.quotes = this.httpC.get(this.favQuotesURL);
+    console.log(this.quotes);
+  }
 
+  getQuotes() {  
+// return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
+    this.quotes = this.httpC.get(this.favQuotesURL);
   }
 
   async presentPopover(ev: any) {
