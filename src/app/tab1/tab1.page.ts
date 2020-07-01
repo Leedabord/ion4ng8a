@@ -13,30 +13,32 @@ import { Tab2aPage } from '../tab2a/tab2a.page';
 })
 export class Tab1Page {
 
-favQuotesURL = 
- 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb' ;
-  
+favQuotesURL =   
+  'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb'; 
+
 //  'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb'; 
+// 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb' ;
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 // readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
-quotes: Observable<any>;
+quotes: Observable<any>;  qq2: { "records":[] };  
 
   constructor(
     private httpC: HttpClient, 
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
-//    this.quotes = this.httpC.get(this.favQuotesURL);
-    console.log('qq: ' , this.quotes);
+    this.quotes = this.httpC.get(this.favQuotesURL);
 
-  fetch( 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb' ) 
+  fetch(this.favQuotesURL) 
    .then(res => res.json()) 
-   .then (recs => { const qq = recs; // JSON.parse(recs) .records; 
-     this.quotes = qq.records;
-    console.log('recs:: ', this.quotes); });
-
-//  }
+   .then (recs => { 
+  //  this.quotes = recs; 
+  //  JSON.parse(qq.records); 
+  //  console.log('qq: ' , this.quotes);
+    this.qq2 = recs;
+    console.log('recs:: ', this.qq2); });
+  }
 
 //  getQuotes() {  
 //    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
@@ -51,7 +53,6 @@ quotes: Observable<any>;
 //});
 // return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 //    this.quotes = this.httpC.get(this.favQuotesURL);
-  }
 
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({

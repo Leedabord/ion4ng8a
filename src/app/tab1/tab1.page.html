@@ -7,8 +7,11 @@
 
 <ion-content>
 
-<div *ngFor="let qq of quotes | async">
-<h4> </h4>  {{ qq.origin }}
+<div *ngFor="let qq of quotes.records | async">
+<h4> </h4>  {{ qq }}
 </div>
+
+<h4> </h4>  httpQuotes:: <h4> </h4>  
+{{ quotes | json }}
 
 </ion-content>
