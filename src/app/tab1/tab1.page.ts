@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Rx';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { PopoverController, ToastController } from '@ionic/angular';
 import { Tab2aPage } from '../tab2a/tab2a.page';
@@ -21,38 +21,37 @@ favQuotesURL =
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 // readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
-quotes: Observable<any>;  qq2: { "records":[] };  
+quotes: Observable<any>;  
+qq2: { "records":[] };  
 
   constructor(
     private httpC: HttpClient, 
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
-    this.quotes = this.httpC.get(this.favQuotesURL);
+
+}
+
+// 
+//    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+//    const params = new HttpParams().set('userId', '1');
+//  this.posts = this.http.get(this.ROOT_URL + '/posts', { params })    
+/* 
+ getQuotes() {  
+   this.quotes = this.httpC.get(this.favQuotesURL)
+    .subscribe((data) => {
+      return data;
+      console.log('data:: ', data);
+    });
 
   fetch(this.favQuotesURL) 
    .then(res => res.json()) 
    .then (recs => { 
-  //  this.quotes = recs; 
-  //  JSON.parse(qq.records); 
-  //  console.log('qq: ' , this.quotes);
-    this.qq2 = recs;
-    console.log('recs:: ', this.qq2); });
-  }
-
-//  getQuotes() {  
-//    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
-//    const params = new HttpParams().set('userId', '1');
-//  this.posts = this.http.get(this.ROOT_URL + '/posts', { params })    
-//  fetch(this.favQuotesURL) .then() .then (recs => { });
-// fetch('https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb')
-// .then(res => res.json()) // Read the response stream as a json, json() function also returns a promise, and .then can return a promise which will cause the next .then to wait for it to resolve
-// .then(recs => {
-	// We will get the posts of the first user
-//  const firstUser = recs; console.log(firstUser);
-//});
-// return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
-//    this.quotes = this.httpC.get(this.favQuotesURL);
+     this.qq2 = recs;
+     console.log('recs:: ', this.qq2); });
+*/
+// return this.httpC.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
+// this.quotes = this.httpC.get(this.favQuotesURL);
 
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({

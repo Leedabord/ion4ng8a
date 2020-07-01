@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -10,7 +10,8 @@ import 'rxjs/add/operator/map';
   styleUrls: ['app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+    totalAngularPackages;
 
 // readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
@@ -23,15 +24,17 @@ aaquotes: Observable<any>;
     private platform: Platform
   ) {
     this.platform.ready().then(() => {
-  //    this.initializeApp();
     this.aaquotes = this.httpC.get(this.favQuotesURL);
-    console.log(this.aaquotes);
+    console.log('aaq:: ', this.aaquotes);
     });
   }
-//  initializeApp() {  }
 
-  getQuotes() {  
-    this.aaquotes = this.httpC.get(this.favQuotesURL);
-  }
+  ngOnInit() {      
+       // Simple GET request with response type <any>
+     this.httpC.get<any>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
+            this.totalAngularPackages = data.total;
+      console.log('ngOnInit:: ', this.totalAngularPackages, ' ::');
+        })
+    }
 
 }
