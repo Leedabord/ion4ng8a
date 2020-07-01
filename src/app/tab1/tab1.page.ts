@@ -20,9 +20,9 @@ readonly favQuotesURL =
 // 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb' ;
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 // readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
-
-quotes; //  : Observable<any>;  
 // const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+
+quotes: Observable<any>;  
 
   constructor(
     private httpC: HttpClient, 
@@ -30,23 +30,35 @@ quotes; //  : Observable<any>;
     public toastCtrl: ToastController
     ) {
       this.httpC.get<any>(this.favQuotesURL).subscribe(
-        data => {
-            this.quotes = data.records;
-    console.log('qq:: ', this.quotes);
-    })
+      data => {
+          this.quotes = data.records;
+    //    console.log('qq:: ', this.quotes);
+      },
+      error => { console.error('http:: That.s an error!', error) }
+  )
   }
 
 /* 
 // 
-//    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
-//    const params = new HttpParams().set('userId', '1');
-//  this.posts = this.http.get(this.ROOT_URL + '/posts', { httpH })    
+totalAngularPackages;
+        // Simple GET request with response type <any>
+     this.httpC.get<any>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
+            this.totalAngularPackages = data.total;
+      console.log('ngOnInit:: ', this.totalAngularPackages, ' ::');
+        });
 
-  fetch(this.favQuotesURL) 
-   .then(res => res.json()) 
-   .then (recs => { 
-     this.qq2 = recs;
-     console.log('recs:: ', this.qq2); });
+//  const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+interface SearchResults {
+    total: number;
+    results: Array<object>;
+}
+const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' }
+this.http.get<SearchResults>('https://api.npms.io/v2/search?q=scope:angular', { headers }).subscribe(
+  data => {
+    this.totalAngularPackages = data.total;
+  },
+  error => { console.error('There was an error!', error) }
+)
 */
 
 
