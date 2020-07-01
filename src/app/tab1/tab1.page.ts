@@ -13,7 +13,7 @@ import { Tab2aPage } from '../tab2a/tab2a.page';
 })
 export class Tab1Page {
 
-favQuotesURL =   
+readonly favQuotesURL =   
   'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb'; 
 
 //  'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb'; 
@@ -21,16 +21,19 @@ favQuotesURL =
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 // readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
-quotes: Observable<any>;  
-qq2: { "records":[] };  
+quotes; //  : Observable<any>;  
+// qq2: { records:[] };  
 
   constructor(
     private httpC: HttpClient, 
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
-
-}
+     this.httpC.get(this.favQuotesURL).subscribe(data => {
+            this.quotes = data;
+    console.log('qq:: ', this.quotes);
+        })
+  }
 
 // 
 //    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
@@ -117,6 +120,5 @@ qq2: { "records":[] };
   }
 
 }
-
 
 */
