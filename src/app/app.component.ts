@@ -11,11 +11,11 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent implements OnInit {
 
-  readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
+//  readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
-// readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
+readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
-aaquotes;   // : Observable<any>;
+aaposts;   // : Observable<any>;
 
   constructor(
     private httpC: HttpClient, 
@@ -25,15 +25,12 @@ aaquotes;   // : Observable<any>;
   }
 
   ngOnInit() {      
-
     this.httpC.get<any>(this.favQuotesURL).subscribe(
-       data => {
-         this.aaquotes = data;
-         console.log('aaq:: ', this.aaquotes);
-       },
-       error => { console.error('There was an error!', error) }
+      data => {
+        this.aaps = data;
+      },
+      error => { console.error('AppC:: There was an error!', error) }
     )
-
   }
 
 }
@@ -46,8 +43,12 @@ totalAngularPackages;
       console.log('ngOnInit:: ', this.totalAngularPackages, ' ::');
         });
 
+interface SearchResults {
+    total: number;
+    results: Array<object>;
+}
 const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' }
-this.http.get<any>('https://api.npms.io/v2/search?q=scope:angular', { headers }).subscribe(
+this.http.get<SearchResults>('https://api.npms.io/v2/search?q=scope:angular', { headers }).subscribe(
   data => {
     this.totalAngularPackages = data.total;
   },
