@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Rx';
+import { catchError, map, tap } from 'rxjs/operators';
+
 import { PopoverController, ToastController } from '@ionic/angular';
 import { Tab2aPage } from '../tab2a/tab2a.page';
 
@@ -9,12 +13,42 @@ import { Tab2aPage } from '../tab2a/tab2a.page';
 })
 export class Tab1Page {
 
+readonly favQuotesURL =   
+  'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb'; 
+
+//  'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb'; 
+// 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb' ;
+// readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
+// readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
+
+quotes; //  : Observable<any>;  
+// const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+
   constructor(
+    private httpC: HttpClient, 
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
-
+      this.httpC.get<any>(this.favQuotesURL).subscribe(
+        data => {
+            this.quotes = data.records;
+    console.log('qq:: ', this.quotes);
+    })
   }
+
+/* 
+// 
+//    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+//    const params = new HttpParams().set('userId', '1');
+//  this.posts = this.http.get(this.ROOT_URL + '/posts', { httpH })    
+
+  fetch(this.favQuotesURL) 
+   .then(res => res.json()) 
+   .then (recs => { 
+     this.qq2 = recs;
+     console.log('recs:: ', this.qq2); });
+*/
+
 
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
@@ -80,6 +114,5 @@ export class Tab1Page {
   }
 
 }
-
 
 */

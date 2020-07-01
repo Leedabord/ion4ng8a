@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProfileModel } from './profile.model';
+import { ProfileModel } from '../models/profile';
 import { FirebaseAuthService } from '../firebase-auth.service';
 
 @Component({

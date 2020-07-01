@@ -1,10 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>    </ion-title>
+    <ion-title> Fav Quote Machine  </ion-title>
+<!-- 
     <ion-button (click) ="presentToast()">Show Quote</ion-button>
+-->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<div *ngFor="let qq of quotes">
+<h4> </h4>  {{ qq.fields | json }}
+</div>
 
 </ion-content>

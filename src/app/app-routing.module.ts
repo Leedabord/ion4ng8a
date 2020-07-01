@@ -5,7 +5,6 @@ import { IonicModule } from '@ionic/angular';
 const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: '**', redirectTo: '/tabs/tab1', pathMatch: 'full' }
-
 ];
 @NgModule({
   imports: [
@@ -14,3 +13,18 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+/* 
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  {
+    path: 'contact-details/:id',
+    loadChildren: () => import('./contact-details/contact-details.module').then( m => m.ContactDetailsPageModule)
+  },
+  {
+    path: 'update-contact/:id',
+    loadChildren: () => import('./update-contact/update-contact.module').then( m => m.UpdateContactPageModule)
+  }
+];
+*/
