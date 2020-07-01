@@ -1,16 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Fav Quote Machine  </ion-title>
-<!-- 
-    <ion-button (click) ="presentToast()">Show Quote</ion-button>
--->
+    <ion-title> Fav Quote Machine {{ tvalue }}  </ion-title>
+    <ion-button (click) ="presentToast()" slot="end" fill="clear">Next</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-<div *ngFor="let qq of quotes">
-<h4> </h4>  {{ qq.fields | json }}
-</div>
+<ion-list> <ion-card  *ngFor="let qq of quotes">
+<h4 slot="center"> " {{ qq.fields.qtext }} "   </h4>
+<div slot="end"> ~  {{qq.fields.origin }} </div>
+</ion-card> </ion-list>
 
 </ion-content>

@@ -17,20 +17,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { FirebaseAuthService } from './firebase-auth.service';
-
-import { NewContactPage } from './new-contact/new-contact.page';
-import { Tab2aPage } from './tab2a/tab2a.page';
+import { Random } from 'random-js';
 
 @NgModule({
-  declarations: [
-    AppComponent, 
-    // ReactiveFormsModule, 
-    Tab2aPage, NewContactPage
-  ],
-  entryComponents: [
-    Tab2aPage, NewContactPage  // , ReactiveFormsModule
-  ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  declarations: [    AppComponent  ],
+  entryComponents: [  ],
+  imports: [ BrowserModule, IonicModule.forRoot(), AppRoutingModule,
    ReactiveFormsModule, HttpClientModule,  
   AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -45,17 +37,4 @@ import { Tab2aPage } from './tab2a/tab2a.page';
 })
 export class AppModule {}
 
-/* 
-// import { HomePage } from '../pages/home/home';
-// export const firebaseConfig = {
-
-@NgModule({
-  entryComponents: [
-    MyApp,
-    HomePage
-  ],
-  providers: [
-    AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
-*/
+/*  */

@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Random } from "random-js";
 
 import { PopoverController, ToastController } from '@ionic/angular';
 import { Tab2aPage } from '../tab2a/tab2a.page';
@@ -20,33 +21,51 @@ readonly favQuotesURL =
 // 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/pluART/rec1cU5MrjwTj3kGy?api_key=key66fQg5IghIIQmb' ;
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
 // readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
-
-quotes; //  : Observable<any>;  
 // const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+
+quotes: Observable<any>;  
+tvalue; trandom;
 
   constructor(
     private httpC: HttpClient, 
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
+
       this.httpC.get<any>(this.favQuotesURL).subscribe(
-        data => {
-            this.quotes = data.records;
-    console.log('qq:: ', this.quotes);
-    })
+      data => {
+          this.quotes = data.records;
+    //    console.log('qq:: ', this.quotes);
+      },
+      error => { console.error('http:: That.s an error!', error) }
+  )
   }
 
 /* 
+// ES6 Modules
+import { Random } from "random-js";
+const random = new Random(); // uses the nativeMath engine
+const value = random.integer(1, 100);
 // 
-//    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
-//    const params = new HttpParams().set('userId', '1');
-//  this.posts = this.http.get(this.ROOT_URL + '/posts', { httpH })    
+totalAngularPackages;
+        // Simple GET request with response type <any>
+     this.httpC.get<any>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
+            this.totalAngularPackages = data.total;
+      console.log('ngOnInit:: ', this.totalAngularPackages, ' ::');
+        });
 
-  fetch(this.favQuotesURL) 
-   .then(res => res.json()) 
-   .then (recs => { 
-     this.qq2 = recs;
-     console.log('recs:: ', this.qq2); });
+//  const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
+interface SearchResults {
+    total: number;
+    results: Array<object>;
+}
+const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' }
+this.http.get<SearchResults>('https://api.npms.io/v2/search?q=scope:angular', { headers }).subscribe(
+  data => {
+    this.totalAngularPackages = data.total;
+  },
+  error => { console.error('There was an error!', error) }
+)
 */
 
 
@@ -61,8 +80,13 @@ quotes; //  : Observable<any>;
   }
 
   async presentToast() {
+
+this.trandom = new Random(); // uses the nativeMath engine
+  this.tvalue = this.trandom.integer(1, 25);
+ console.log('val:: ', this.tvalue);
+
     const toast = await this.toastCtrl.create({
-      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.',
+      message: this.quotes[this.tvalue -1].fields.qtext,
       position: 'middle',
       duration: 3000
     });
@@ -72,6 +96,12 @@ quotes; //  : Observable<any>;
 }
 
 /* 
+    const toast = await this.toastCtrl.create({
+      message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus quibusdam eum nihil optio, ullam accusamus magni, nobis suscipit reprehenderit, sequi quam amet impedit. Accusamus dolorem voluptates laborum dolor obcaecati.',
+      position: 'middle',
+      duration: 3000
+    });
+
   showToastWithCloseButton() {
     const toast = this.toastCtrl.create({
       message: 'Your internet connection appears to be offline. Data integrity is not guaranteed.',
