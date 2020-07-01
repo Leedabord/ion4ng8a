@@ -27,9 +27,10 @@ aaposts;   // : Observable<any>;
   ngOnInit() {      
     this.httpC.get<any>(this.favQuotesURL).subscribe(
       data => {
-        this.aaps = data;
+        this.aaposts = data;
+      console.log('ngOnInit:: ', this.aaposts, ' ::');
       },
-      error => { console.error('AppC:: There was an error!', error) }
+      error => { console.error('AppC:: Thats an error!', error) }
     )
   }
 
