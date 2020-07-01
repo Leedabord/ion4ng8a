@@ -13,18 +13,19 @@ export class AppComponent implements OnInit {
 
 //  readonly favQuotesURL = 'https://api.airtable.com/v0/app0hohtq4b1nM0Kb/FavQuotes?api_key=key66fQg5IghIIQmb';
 // readonly favQuotesURL = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
-readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
-
-aaposts;   // : Observable<any>;
+//readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
+aaposts: Observable<any>;
 
   constructor(
     private httpC: HttpClient, 
     private platform: Platform
-    ) {
-//     this.platform.ready().then(() => {   })
-  }
+    ) {  }
 
-  ngOnInit() {      
+  ngOnInit() {  }
+}
+
+/*
+  xngOnInit() {      
     this.httpC.get<any>(this.favQuotesURL).subscribe(
       data => {
         this.aaposts = data;
@@ -34,9 +35,6 @@ aaposts;   // : Observable<any>;
     )
   }
 
-}
-
-/*
 totalAngularPackages;
         // Simple GET request with response type <any>
      this.httpC.get<any>('https://api.npms.io/v2/search?q=scope:angular').subscribe(data => {
