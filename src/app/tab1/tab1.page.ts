@@ -22,24 +22,25 @@ readonly favQuotesURL =
 // readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
 quotes; //  : Observable<any>;  
-qq2: { records:[] };  
+// const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
 
   constructor(
     private httpC: HttpClient, 
     public popoverController: PopoverController,
     public toastCtrl: ToastController
     ) {
-     this.httpC.get(this.favQuotesURL).subscribe(data => {
+      this.httpC.get<any>(this.favQuotesURL).subscribe(
+        data => {
             this.quotes = data.records;
     console.log('qq:: ', this.quotes);
-        })
+    })
   }
 
 /* 
 // 
 //    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
 //    const params = new HttpParams().set('userId', '1');
-//  this.posts = this.http.get(this.ROOT_URL + '/posts', { params })    
+//  this.posts = this.http.get(this.ROOT_URL + '/posts', { httpH })    
 
   fetch(this.favQuotesURL) 
    .then(res => res.json()) 

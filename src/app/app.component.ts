@@ -30,7 +30,7 @@ aaposts;   // : Observable<any>;
         this.aaposts = data;
       console.log('ngOnInit:: ', this.aaposts, ' ::');
       },
-      error => { console.error('AppC:: Thats an error!', error) }
+      error => { console.error('AppC:: That-s an error!', error) }
     )
   }
 
