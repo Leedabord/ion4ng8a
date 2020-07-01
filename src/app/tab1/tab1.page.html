@@ -7,9 +7,9 @@
 
 <ion-content>
 
-<ion-list> <ion-item  *ngFor="let qq of quotes">
-<h4> </h4> " {{ qq.fields.qtext }} "  <br>
- ~  {{qq.fields.origin }}
-</ion-item> </ion-list>
+<ion-list> <ion-card  *ngFor="let qq of quotes">
+<h4 slot=> " {{ qq.fields.qtext }} "   </h4>
+<div slot="end"> ~  {{qq.fields.origin }} </div>
+</ion-card> </ion-list>
 
 </ion-content>
