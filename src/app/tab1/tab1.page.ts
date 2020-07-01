@@ -22,7 +22,7 @@ readonly favQuotesURL =
 // readonly favQuotesURL = 'https://jsonplaceholder.typicode.com/posts';
 
 quotes; //  : Observable<any>;  
-// qq2: { records:[] };  
+qq2: { records:[] };  
 
   constructor(
     private httpC: HttpClient, 
@@ -30,22 +30,16 @@ quotes; //  : Observable<any>;
     public toastCtrl: ToastController
     ) {
      this.httpC.get(this.favQuotesURL).subscribe(data => {
-            this.quotes = data;
+            this.quotes = data.records;
     console.log('qq:: ', this.quotes);
         })
   }
 
+/* 
 // 
 //    const httpH = new HttpHeaders().set('Authorization', 'Bearer key66fQg5IghIIQmb');
 //    const params = new HttpParams().set('userId', '1');
 //  this.posts = this.http.get(this.ROOT_URL + '/posts', { params })    
-/* 
- getQuotes() {  
-   this.quotes = this.httpC.get(this.favQuotesURL)
-    .subscribe((data) => {
-      return data;
-      console.log('data:: ', data);
-    });
 
   fetch(this.favQuotesURL) 
    .then(res => res.json()) 
@@ -53,8 +47,7 @@ quotes; //  : Observable<any>;
      this.qq2 = recs;
      console.log('recs:: ', this.qq2); });
 */
-// return this.httpC.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
-// this.quotes = this.httpC.get(this.favQuotesURL);
+
 
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
