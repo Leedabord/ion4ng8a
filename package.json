@@ -21,6 +21,7 @@
     "@ionic/angular": "4.11.10",
     "core-js": "2.6.11",
     "firebase": "7.15.3",
+    "random-js": "^2.1.0",
     "rxjs": "6.5.2",
     "rxjs-compat": "^6.5.5",
     "tslib": "1.13.0",
